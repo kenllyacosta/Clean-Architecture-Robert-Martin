@@ -15,10 +15,10 @@ namespace WebExceptionsPresenters
             StringBuilder sb = new();
             foreach (var item in Exception.Errors)
             {
-                sb.Append($"{item.PropertyName}|{item.ErrorMessage}");
+                sb.AppendLine($"Property: {item.PropertyName}, Error: {item.ErrorMessage}");
             }
 
-            return SetResult(exceptionContext, StatusCodes.Status500InternalServerError, "Error en los datos de entrada", sb.ToString());
+            return SetResult(exceptionContext, StatusCodes.Status400BadRequest, "Error en los datos de entrada", sb.ToString());
         }
     }
 }
